@@ -6,8 +6,11 @@ using UnityEngine.UI;
 public class showBestscore : MonoBehaviour
 {
     public Text bestscoreText;
-     void Update()
+    private void Start()
     {
-        bestscoreText.text = Score.bestscoreText;
+    }
+    void Update()
+    {
+        bestscoreText.text = "YOU BSET : " + Score.getbestScore();
     }
 }

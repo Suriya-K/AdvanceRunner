@@ -8,17 +8,17 @@ public class Score : MonoBehaviour
     public Transform player;
     public Text scoreText;
     public Text highscoreText;
-    public static string bestscoreText = "YOU BEST : " + PlayerPrefs.GetInt("Highscore").ToString();
+    public static string bestscoreText = "";
     public float time = 0;
     public int score = 0;
+    // Update is called once per frame
     private void Start()
     {
-        highscoreText.text = "BEST : " + PlayerPrefs.GetInt("Highscore").ToString();
-
+        PlayerPrefs.SetInt("Highscore", score);
     }
-    // Update is called once per frame
     void Update()
     {
+        highscoreText.text = "BEST : " + PlayerPrefs.GetInt("Highscore").ToString();
         if (GameManager.isStart)
         {
             time++;
@@ -29,7 +29,6 @@ public class Score : MonoBehaviour
                     score += 1;
                     if (score > PlayerPrefs.GetInt("Highscore"))
                     {
-                        PlayerPrefs.SetInt("Highscore", score);
                         highscoreText.text = "BEST : " + PlayerPrefs.GetInt("Highscore").ToString();
                         bestscoreText = "YOU BEST : " + PlayerPrefs.GetInt("Highscore").ToString();
                     }
@@ -38,5 +37,9 @@ public class Score : MonoBehaviour
             }
             scoreText.text = score.ToString();
         }
+    }
+    public static string getbestScore()
+    {
+        return PlayerPrefs.GetInt("Highscore").ToString();
     }
 }
