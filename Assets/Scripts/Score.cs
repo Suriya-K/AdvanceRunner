@@ -8,6 +8,7 @@ public class Score : MonoBehaviour
     public Transform player;
     public Text scoreText;
     public Text highscoreText;
+    public static string bestscoreText = "YOU BEST : " + PlayerPrefs.GetInt("Highscore").ToString();
     public float time = 0;
     public int score = 0;
     private void Start()
@@ -30,6 +31,7 @@ public class Score : MonoBehaviour
                     {
                         PlayerPrefs.SetInt("Highscore", score);
                         highscoreText.text = "BEST : " + PlayerPrefs.GetInt("Highscore").ToString();
+                        bestscoreText = "YOU BEST : " + PlayerPrefs.GetInt("Highscore").ToString();
                     }
                 }
                 time = 0;
